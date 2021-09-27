@@ -1,5 +1,5 @@
 :root {
-  --darkColor: rgb(36, 39, 45);
+  --darkColor: rgb(31, 34, 40);
   --orangeColor: rgb(242, 143, 59);
   --whiteColor: rgb(245, 240, 240);
 }
@@ -16,17 +16,17 @@ body {
 }
 
 .calculator {
-  width: 324px;
-  margin: 50px auto;
+  width: 340px;
+  margin: 50px auto 0px auto;
 
   color: var(--whiteColor);
   border: solid 2px var(--orangeColor);
 
   display: grid;
-  grid-template: 60px repeat(5, 32px) / repeat(4, 25%); /* rows / columns */
+  grid-template: 60px repeat(6, 32px) / repeat(4, 25%); /* rows / columns */
 }
 
-button {
+.button {
   background-color: var(--orangeColor);
   color: var(--darkColor);
 
@@ -35,18 +35,90 @@ button {
   cursor: pointer;
 }
 
+/* ----- Affichage du resultat ----- */
 #result {
   grid-area: 1 / 1 / 2 / 5; /* startRow / startColumn / endRow / endColumn */
 
-  margin: 15px 10px 0 0;
+  margin: 12px 10px 0 10px;
   text-align: right;
-  font-size: 2rem;
+  font-size: 1.8rem;
+
+  overflow-x: scroll;
 }
+
+/* ----- Clear btn ----- */
 #c {
   grid-area: 2 / 4 / 5 / 5; /* startRow / startColumn / endRow / endColumn */
 
   text-transform: capitalize;
 }
+
+/* ----- Equal btn ----- */
 #equal {
-  grid-area: 6 / 1 / 7 / 3; /* startRow / startColumn / endRow / endColumn */
+  grid-area: 7 / 1 / 8 / 3; /* startRow / startColumn / endRow / endColumn */
 }
+
+/* ----- Parenthese btn ----- */
+#doubleTouche {
+  display: grid;
+  grid-template: 1fr / 50% 50%;
+}
+
+/* -------- Affichage de l'historique --------- */
+.history {
+  color: var(--whiteColor);
+  border: solid 2px var(--orangeColor);
+
+  overflow-x: scroll;
+
+  visibility: hidden;
+
+  margin: 40px auto 0px auto;
+
+  min-height: 256px;
+  min-width: 340px;
+  max-width: 75vw;
+  padding: 12px;
+}
+.history.show {
+  visibility: visible;
+}
+hr {
+  margin: 3px 0 6px 0;
+  height: 1px;
+  color: var(--orangeColor);
+}
+
+/* ---------- RESPONSIVE --------- */
+@media screen and (min-width: 1000px) {
+  body {
+    display: flex;
+    justify-content: center;
+  }
+  .calculator {
+    width: 440px;
+    grid-template: 75px repeat(6, 40px) / repeat(4, 25%); /* rows / columns */
+    margin: 80px 15px 0px auto;
+  }
+  #result {
+    margin: 14px 12px 0 12px;
+    font-size: 2.2rem;
+  }
+  .history {
+    height: 319px;
+    min-width: 440px;
+    margin: 80px auto 0px 15px;
+  }
+}
+@media screen and (max-width: 360px) {
+  .calculator {
+    width: 260px;
+  }
+  #result {
+    margin: 16px 8px 0 8px;
+    font-size: 1.5rem;
+  }
+  .history {
+    min-width: 260px;
+  }
+} ;
