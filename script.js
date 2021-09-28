@@ -54,7 +54,7 @@ function viviRoiDesMaths() {
         newDiv.appendChild(newSpanCalc);
         newDiv.appendChild(newSpanResult);
         newDiv.appendChild(newHR);
-        historyAside.appendChild(newDiv);
+        historyAside.insertBefore(newDiv, historyAside.children[0]);
     }
 }
 

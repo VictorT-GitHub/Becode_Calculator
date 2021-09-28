@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Gemunu+Libre:wght@200;300;400;500;600;700;800&display=swap");
+
 :root {
   --darkColor: rgb(31, 34, 40);
   --orangeColor: rgb(242, 144, 59);
@@ -8,11 +10,11 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 body {
   background: var(--darkColor);
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 .calculator {
@@ -27,12 +29,18 @@ body {
 }
 
 button {
+  font-family: "Gemunu Libre", sans-serif;
+  font-weight: 600;
+  font-size: 0.9rem;
+
   background-color: var(--orangeColor);
   color: var(--darkColor);
 
   border: 1px solid var(--darkColor);
 
   cursor: pointer;
+
+  /* font-weight: 600; */
 }
 
 /* ----- Affichage du resultat ----- */
@@ -44,6 +52,7 @@ button {
   font-size: 1.8rem;
 
   overflow-x: scroll;
+  overflow-y: hidden; /* Test fix probleme(windows/googlechrome): barre scroll-Y toujours presente */
 }
 
 /* ----- Clear btn ----- */
@@ -61,7 +70,7 @@ button {
 /* ----- Parenthese btn ----- */
 #doubleTouche {
   display: grid;
-  grid-template: 1fr / 50% 50%;
+  grid-template: 1fr / 50% 50%; /* rows / columns */
 }
 
 /* -------- Affichage de l'historique --------- */
@@ -69,16 +78,18 @@ button {
   color: var(--whiteColor);
   border: solid 2px var(--orangeColor);
 
-  overflow-x: scroll;
+  overflow-x: scroll; /* ? Pourquoi ça ne fonctionne pas comme je voudrais ? */
 
   visibility: hidden;
 
-  margin: 40px auto 0px auto;
+  margin: 40px auto 40px auto;
+  padding: 12px;
 
   min-height: 256px;
+  /* max-height: 60vh; */
+
   min-width: 340px;
   max-width: 75vw;
-  padding: 12px;
 }
 .show {
   visibility: visible;
@@ -94,25 +105,37 @@ hr {
   body {
     display: flex;
     justify-content: center;
+    align-items: flex-start;
+    flex-direction: row-reverse;
   }
   .calculator {
+    margin: 80px 30px 0px 15px;
     width: 440px;
     grid-template: 75px repeat(6, 40px) / repeat(4, 25%); /* rows / columns */
-    margin: 80px 15px 0px auto;
+  }
+  button {
+    font-size: 1.1rem;
   }
   #result {
     margin: 14px 12px 0 12px;
     font-size: 2.2rem;
   }
   .history {
-    height: 319px;
+    margin: 80px 15px 0px 30px;
+
+    min-height: 319px;
+    max-height: 85vh;
+
     min-width: 440px;
-    margin: 80px auto 0px 15px;
   }
 }
+
 @media screen and (max-width: 360px) {
   .calculator {
     width: 260px;
+  }
+  button {
+    font-size: 0.8rem;
   }
   #result {
     margin: 16px 8px 0 8px;
