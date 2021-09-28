@@ -3,7 +3,7 @@ const allBtns = document.querySelectorAll('.button');
 const appBtns = document.querySelectorAll('.appbtn');
 const result = document.querySelector('#result');
 const historyAside = document.querySelector('.history');
-const history = document.querySelector('#history');
+const historyBtn = document.querySelector('#history');
 
 const parenthese1 = document.querySelector('#parenthese1');
 const parenthese2 = document.querySelector('#parenthese2');
@@ -79,7 +79,7 @@ c.addEventListener('click', () => result.innerHTML = "");
 PI.addEventListener('click', () => result.innerHTML += Math.PI);
 
 // 'history' btn
-history.addEventListener('click', () => historyAside.classList.toggle('show'));
+historyBtn.addEventListener('click', () => historyAside.classList.toggle('show'));
 
 
 // ---------------- KEYPRESS EVENT ----------------------
@@ -106,7 +106,8 @@ document.addEventListener('keydown', (e) => {
             result.innerHTML += e.key;
             break;
 
-        // case 'Enter':
+        case 'e':
+        case ' ':
         case '=':
             viviRoiDesMaths();
             break;

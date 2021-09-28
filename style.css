@@ -2,6 +2,8 @@
 
 :root {
   --darkColor: rgb(31, 34, 40);
+  --gradientdarkColor: rgb(10, 11, 15);
+  --darkorangeColor: rgb(189, 112, 45);
   --orangeColor: rgb(242, 144, 59);
   --whiteColor: rgb(245, 240, 240);
 }
@@ -13,34 +15,55 @@
 }
 
 body {
-  background: var(--darkColor);
+  background: linear-gradient(
+    -180deg,
+    var(--darkColor),
+    var(--gradientdarkColor)
+  );
+  height: 100vh;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+#div-flex {
+  padding-top: 18px;
+}
+
+.calculator,
+.history {
+  background: rgba(0, 0, 0, 0.25);
+  box-shadow: 1px 1px 12px rgba(0, 0, 0, 0.6);
+
+  color: var(--whiteColor);
+  border: solid 2px var(--orangeColor);
+  border-radius: 2px;
 }
 
 .calculator {
   width: 340px;
-  margin: 50px auto 0px auto;
-
-  color: var(--whiteColor);
-  border: solid 2px var(--orangeColor);
+  margin: auto;
 
   display: grid;
-  grid-template: 60px repeat(6, 32px) / repeat(4, 25%); /* rows / columns */
+  grid-template: 9vh repeat(6, 4.4vh) / repeat(4, 25%); /* rows / columns */
 }
 
 button {
+  border-radius: 2px;
+
   font-family: "Gemunu Libre", sans-serif;
   font-weight: 600;
   font-size: 0.9rem;
+  letter-spacing: 0.8px;
 
-  background-color: var(--orangeColor);
+  background: linear-gradient(
+    -180deg,
+    var(--orangeColor),
+    var(--darkorangeColor)
+  );
   color: var(--darkColor);
 
   border: 1px solid var(--darkColor);
 
   cursor: pointer;
-
-  /* font-weight: 600; */
 }
 
 /* ----- Affichage du resultat ----- */
@@ -51,8 +74,8 @@ button {
   text-align: right;
   font-size: 1.8rem;
 
-  overflow-x: scroll;
-  overflow-y: hidden; /* Test fix probleme(windows/googlechrome): barre scroll-Y toujours presente */
+  overflow-x: auto;
+  overflow-y: hidden; /* Fix probleme(windows/googlechrome): barre scroll-Y toujours presente */
 }
 
 /* ----- Clear btn ----- */
@@ -75,24 +98,21 @@ button {
 
 /* -------- Affichage de l'historique --------- */
 .history {
-  color: var(--whiteColor);
-  border: solid 2px var(--orangeColor);
-
-  overflow-x: scroll; /* ? Pourquoi ça ne fonctionne pas comme je voudrais ? */
+  overflow-x: auto;
 
   visibility: hidden;
 
-  margin: 40px auto 40px auto;
+  margin: 14px auto 0 auto;
   padding: 12px;
 
-  min-height: 256px;
-  /* max-height: 60vh; */
+  min-height: 32vh;
+  max-height: 55vh;
 
   min-width: 340px;
   max-width: 75vw;
 }
 .show {
-  visibility: visible;
+  visibility: visible; /* -> toggle JS */
 }
 hr {
   margin: 3px 0 6px 0;
@@ -100,48 +120,83 @@ hr {
   color: var(--orangeColor);
 }
 
+/* ------ Footer ------ */
+h6 {
+  color: var(--whiteColor);
+
+  font-family: "Gemunu Libre", sans-serif;
+  font-weight: 400;
+  word-spacing: 1px;
+  letter-spacing: 0.8px;
+  text-align: center;
+
+  cursor: default;
+
+  width: 100vw;
+
+  position: absolute;
+  left: 50%; /* ? Difference entre '%' et 'vw' ? */
+  bottom: 4px;
+  transform: translateX(-50%);
+}
+
 /* ---------- RESPONSIVE --------- */
 @media screen and (min-width: 1000px) {
-  body {
+  #div-flex {
     display: flex;
     justify-content: center;
     align-items: flex-start;
     flex-direction: row-reverse;
   }
   .calculator {
-    margin: 80px 30px 0px 15px;
+    margin: 50px 30px 0px 15px;
     width: 440px;
-    grid-template: 75px repeat(6, 40px) / repeat(4, 25%); /* rows / columns */
+    grid-template: 70px repeat(6, 40px) / repeat(4, 25%); /* rows / columns */
   }
   button {
     font-size: 1.1rem;
   }
   #result {
-    margin: 14px 12px 0 12px;
+    margin: 15px 12px 0 12px;
     font-size: 2.2rem;
   }
   .history {
-    margin: 80px 15px 0px 30px;
+    margin: 50px 15px 0px 30px;
 
+    border: none; /* Debut : tour de magie */
+    padding: 0;
+    max-height: 0;
+    min-height: 0;
+    max-width: 0;
+    min-width: 0;
+  }
+  .show {
+    border: solid 2px var(--orangeColor);
+    padding: 12px;
     min-height: 319px;
     max-height: 85vh;
-
-    min-width: 440px;
+    max-width: 75vw;
+    min-width: 440px; /* Fin : tour de magie */
   }
 }
 
 @media screen and (max-width: 360px) {
   .calculator {
+    grid-template: 8vh repeat(6, 4vh) / repeat(4, 25%); /* rows / columns */
+
     width: 260px;
   }
   button {
     font-size: 0.8rem;
   }
   #result {
-    margin: 16px 8px 0 8px;
+    margin: 10px 8px 0 8px;
     font-size: 1.5rem;
   }
   .history {
     min-width: 260px;
   }
-} ;
+  h6 {
+    font-size: 0.6rem;
+  }
+}
