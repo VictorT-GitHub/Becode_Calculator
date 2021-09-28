@@ -2,8 +2,6 @@
 
 :root {
   --darkColor: rgb(31, 34, 40);
-  --gradientdarkColor: rgb(10, 11, 15);
-  --darkorangeColor: rgb(189, 112, 45);
   --orangeColor: rgb(242, 144, 59);
   --whiteColor: rgb(245, 240, 240);
 }
@@ -12,14 +10,11 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  cursor: default;
 }
 
 body {
-  background: linear-gradient(
-    -180deg,
-    var(--darkColor),
-    var(--gradientdarkColor)
-  );
+  background: linear-gradient(-180deg, var(--darkColor), rgb(10, 11, 15));
   height: 100vh;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
@@ -54,16 +49,15 @@ button {
   font-size: 0.9rem;
   letter-spacing: 0.8px;
 
-  background: linear-gradient(
-    -180deg,
-    var(--orangeColor),
-    var(--darkorangeColor)
-  );
+  background: linear-gradient(-180deg, var(--orangeColor), rgb(189, 112, 45));
   color: var(--darkColor);
 
   border: 1px solid var(--darkColor);
 
   cursor: pointer;
+}
+button:hover {
+  filter: brightness(0.8);
 }
 
 /* ----- Affichage du resultat ----- */
@@ -100,7 +94,7 @@ button {
 .history {
   overflow-x: auto;
 
-  visibility: hidden;
+  visibility: hidden; /* -> toggle JS */
 
   margin: 14px auto 0 auto;
   padding: 12px;
@@ -113,6 +107,10 @@ button {
 }
 .show {
   visibility: visible; /* -> toggle JS */
+}
+.spanHover:hover {
+  cursor: pointer;
+  color: var(--orangeColor);
 }
 hr {
   margin: 3px 0 6px 0;
@@ -129,8 +127,6 @@ h6 {
   word-spacing: 1px;
   letter-spacing: 0.8px;
   text-align: center;
-
-  cursor: default;
 
   width: 100vw;
 

@@ -39,19 +39,31 @@ function viviRoiDesMaths() {
         // history mechanique
         const newDiv = document.createElement('div');
         const newSpanCalc = document.createElement('span');
+        const newSpanEqual = document.createElement('span');
+        newSpanEqual.innerHTML = " = ";
         const newSpanResult = document.createElement('span');
         const newHR = document.createElement('hr');
         
-        newSpanCalc.innerHTML = result.innerHTML + " = ";
-    
-        // RESULTAT [computeResult()] (calcul donc changement de innerText)
-        result.innerHTML = computeResult(result.innerHTML);
+        newSpanCalc.innerHTML = result.innerHTML;
+        newSpanCalc.addEventListener('click', () => { // history-calc clickEvent
+            result.innerHTML += newSpanCalc.innerHTML;
+        })
+        newSpanCalc.classList.add('spanHover'); // IDEE A AMELIORER
+        
+        // result mechanique
+        result.innerHTML = computeResult(result.innerHTML); // RESULTAT [computeResult()] (calcul donc changement de innerText)
         //
-    
+        
         // SUITE history mechanique
-        newSpanResult.innerHTML = "<strong>" + result.innerHTML + "</strong>";
+        newSpanResult.innerHTML = result.innerHTML;
+        newSpanResult.style.fontWeight = "800"
+        newSpanResult.addEventListener('click', () => { // history-result clickEvent
+            result.innerHTML += newSpanResult.innerHTML;
+        })
+        newSpanResult.classList.add('spanHover'); // IDEE A AMELIORER
     
         newDiv.appendChild(newSpanCalc);
+        newDiv.appendChild(newSpanEqual);
         newDiv.appendChild(newSpanResult);
         newDiv.appendChild(newHR);
         historyAside.insertBefore(newDiv, historyAside.children[0]);
