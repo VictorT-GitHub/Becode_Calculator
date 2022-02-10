@@ -38,7 +38,7 @@ body {
   margin: auto;
 
   display: grid;
-  grid-template: 9vh repeat(6, 4.4vh) / repeat(4, 25%); /* rows / columns */
+  grid-template: 9vh repeat(6, 4.4vh) / repeat(4, 1fr); /* rows / columns */
 }
 
 button {
@@ -87,7 +87,7 @@ button:hover {
 /* ----- Parenthese btn ----- */
 #doubleTouche {
   display: grid;
-  grid-template: 1fr / 50% 50%; /* rows / columns */
+  grid-template: 1fr / 1fr 1fr; /* rows / columns */
 }
 
 /* -------- Affichage de l'historique --------- */
@@ -131,7 +131,7 @@ h6 {
   width: 100vw;
 
   position: absolute;
-  left: 50%; /* ? Difference entre '%' et 'vw' ? */
+  left: 50%;
   bottom: 4px;
   transform: translateX(-50%);
 }
@@ -159,7 +159,7 @@ h6 {
   .history {
     margin: 50px 15px 0px 30px;
 
-    border: none; /* Debut : tour de magie */
+    border: none;
     padding: 0;
     max-height: 0;
     min-height: 0;
@@ -171,8 +171,8 @@ h6 {
     padding: 12px;
     min-height: 319px;
     max-height: 85vh;
+    min-width: 440px;
     max-width: 75vw;
-    min-width: 440px; /* Fin : tour de magie */
   }
 }
 
