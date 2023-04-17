@@ -12,6 +12,6 @@ Simple calculator exercice
 | `0` `1` `2` `3` `4` `5` `6` `7` `8` `9` | add this number          |
 | `p`                                     | add PI number            |
 | `(` `)` `.` `+` `-` `*` `/`             | add this operator        |
+| `=`                                     | calc result              |
 | `e`                                     | calc result, same as `=` |
 | `c`                                     | calc result, same as `=` |
-| `=`                                     | calc result              |
