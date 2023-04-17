@@ -1,6 +1,6 @@
 # Calculator
 
-Simple calculator exercice
+Simple calculator exercice with responsive design
 
 **JavaScript** - **CSS3** - **HTML5**
 
